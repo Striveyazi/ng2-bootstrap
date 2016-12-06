@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 import { TypeaheadDirective } from '../typeahead/typeahead.directive';
 import { Observable } from 'rxjs';
 import { TypeaheadMatch } from '../typeahead/typeahead-match.class';
+import { fireEvent } from '../../scripts/helpers.js';
 
 interface State {
   id:number;
@@ -94,7 +95,7 @@ describe('Directive: Typeahead', () => {
 
     beforeEach(fakeAsync(() => {
       inputElement.value = 'Ala';
-      inputElement.dispatchEvent(new Event('keyup'));
+      fireEvent(inputElement, 'keyup');
 
       fixture.detectChanges();
       tick(100);
